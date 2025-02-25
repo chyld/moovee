@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ request.url_for('static', path='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}">
+    <title>oo</title>
+</head>
+<body>
+    <div class="intro">m <span class="oo">oo</span> vee</div>
+    <div class="wrapper">
+        <button id="button-clear">Clear</button>
+        <form id="form-movie">
+            <input type="text" id="input-url" placeholder="Enter video URL" required>
+            <button type="submit">Download</button>
+        </form>
+        <div id="status"></div>
+    </div>
+    <script src="{{ request.url_for('static', path='script.js') }}"></script>
+</body>
+</html>

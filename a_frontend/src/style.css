@@ -1,0 +1,112 @@
+/* This is Tailwind CSS version 4.0 */
+
+@import "tailwindcss";
+
+@theme {
+  --color-moovee-chill: oklch(65% 0.1 220);
+  --color-moovee-text: oklch(85% 0.07 230);
+  --color-moovee-border: oklch(70% 0.2 280);
+  --color-moovee-bg: oklch(25% 0.05 240);
+  --color-moovee-accent: oklch(60% 0.25 280);
+  --color-moovee-success: oklch(70% 0.2 140);
+  --color-moovee-error: oklch(70% 0.25 30);
+  --font-family-moovee: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-moovee-bg min-h-screen;
+    @apply flex flex-col items-center justify-start;
+    @apply text-moovee-text;
+    font-family: var(--font-family-moovee);
+  }
+}
+
+@layer components {
+  .intro {
+    @apply text-moovee-text;
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply font-medium;
+    @apply mt-16;
+    @apply text-center;
+    font-family: var(--font-family-moovee);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  
+  .oo {
+    @apply underline decoration-2 underline-offset-4;
+    @apply decoration-moovee-border;
+    @apply font-bold;
+  }
+  
+  /* Form styling */
+  .wrapper {
+    @apply w-full max-w-md;
+    @apply mt-12 px-4;
+    @apply flex flex-col gap-6;
+    @apply opacity-0;
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  #form-movie {
+    @apply flex flex-col sm:flex-row gap-2;
+    @apply w-full;
+    @apply rounded-xl;
+    @apply backdrop-blur-sm;
+    @apply bg-moovee-bg/30;
+    @apply border border-moovee-border/30;
+    @apply p-2;
+    @apply shadow-lg shadow-moovee-border/10;
+    @apply transition-all duration-300;
+    @apply hover:border-moovee-border/50;
+    @apply focus-within:border-moovee-border;
+    @apply focus-within:ring-2 focus-within:ring-moovee-border/20;
+  }
+  
+  #input-url {
+    @apply flex-grow;
+    @apply bg-transparent;
+    @apply px-4 py-3;
+    @apply rounded-lg;
+    @apply text-moovee-text;
+    @apply placeholder:text-moovee-text/50;
+    @apply border-none;
+    @apply outline-none;
+    @apply transition-all duration-300;
+  }
+  
+  button {
+    @apply px-6 py-3;
+    @apply rounded-lg;
+    @apply font-medium;
+    @apply transition-all duration-300;
+    @apply bg-moovee-border/80;
+    @apply text-moovee-bg;
+    @apply hover:bg-moovee-accent;
+    @apply active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-moovee-border/50;
+  }
+  
+  #button-clear {
+    @apply bg-moovee-bg/50;
+    @apply text-moovee-text/80;
+    @apply border border-moovee-border/30;
+    @apply hover:bg-moovee-bg/80;
+    @apply hover:border-moovee-border/50;
+  }
+  
+  #status {
+    @apply min-h-12;
+    @apply text-center;
+    @apply text-sm;
+    @apply opacity-80;
+    @apply transition-all duration-300;
+  }
+  
+  /* Animation */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
