@@ -66,14 +66,17 @@
   
   #input-url {
     @apply flex-grow;
-    @apply bg-transparent;
+    @apply bg-moovee-chill/10;
     @apply px-4 py-3;
     @apply rounded-lg;
     @apply text-moovee-text;
+    @apply text-xs;
     @apply placeholder:text-moovee-text/50;
     @apply border-none;
     @apply outline-none;
     @apply transition-all duration-300;
+    @apply h-32;
+    @apply resize-none;
   }
   
   button {
