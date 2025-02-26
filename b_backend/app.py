@@ -1,3 +1,4 @@
+import os
 import subprocess
 import uuid
 from os.path import abspath, dirname, join
@@ -29,7 +30,7 @@ def home(request: Request):
 
 
 @app.post("/api/download")
-def download_video(movie: Movie):
+def download(movie: Movie):
     file_uuid = str(uuid.uuid4())
 
     cmd = [
@@ -49,3 +50,10 @@ def download_video(movie: Movie):
     )
 
     return {"url": movie.url, "uuid": file_uuid}
+
+
+@app.get("/api/status")
+def status():
+    files = os.listdir(downloads_dir)
+
+    return {"files": files}
