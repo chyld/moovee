@@ -10,4 +10,8 @@ cp src/assets/* build/static/
 cp src/*.js build/static/
 cp src/home.html build/templates/
 
-npx @tailwindcss/cli -i ./src/style.css -o ./build/static/style.css
+if [ -z "$MOOVEE_DEBUG" ]; then # check if MOOVEE_DEBUG is set
+  npx @tailwindcss/cli -i ./src/style.css -o ./build/static/style.css --watch
+else
+  npx @tailwindcss/cli -i ./src/style.css -o ./build/static/style.css
+fi
