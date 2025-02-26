@@ -10,6 +10,7 @@
   --color-moovee-accent: oklch(60% 0.25 280);
   --color-moovee-success: oklch(70% 0.2 140);
   --color-moovee-error: oklch(70% 0.25 30);
+  --color-moovee-yellow: oklch(85% 0.18 85);
   --font-family-moovee: "Inter", system-ui, sans-serif;
 }
 
@@ -107,9 +108,117 @@
     @apply transition-all duration-300;
   }
   
+  /* Status section styling */
+  .status {
+    @apply w-full max-w-md;
+    @apply mt-8 px-4 pb-16;
+    @apply flex flex-col gap-4;
+    @apply opacity-0;
+    animation: fade-in 0.6s ease-out 0.2s forwards;
+    @apply relative;
+  }
+  
+  #button-get-files {
+    @apply bg-moovee-yellow;
+    @apply text-moovee-bg;
+    @apply border border-moovee-yellow;
+    @apply shadow-lg shadow-moovee-yellow/30;
+    @apply hover:bg-moovee-yellow/90;
+    @apply hover:shadow-xl hover:shadow-moovee-yellow/40;
+    @apply self-start;
+    @apply text-sm font-medium;
+    @apply py-2 px-5;
+    @apply rounded-lg;
+    @apply flex items-center gap-2;
+    @apply relative overflow-hidden;
+  }
+  
+  #button-get-files::before {
+    content: "📁";
+    @apply mr-1;
+  }
+  
+  #button-get-files::after {
+    content: "";
+    @apply absolute inset-0;
+    @apply bg-gradient-to-r from-moovee-yellow/0 via-moovee-yellow/30 to-moovee-yellow/0;
+    @apply opacity-0;
+    @apply transition-opacity duration-700;
+  }
+  
+  #button-get-files:hover::after {
+    @apply opacity-100;
+    animation: shine 1.5s infinite;
+  }
+  
+  #files {
+    @apply w-full;
+    @apply mt-2;
+    @apply rounded-xl;
+    @apply overflow-hidden;
+    @apply backdrop-blur-sm;
+    @apply bg-moovee-bg/50;
+    @apply border-2 border-moovee-yellow/40;
+    @apply divide-y divide-moovee-yellow/10;
+    @apply shadow-lg shadow-moovee-yellow/20;
+    @apply transition-all duration-300;
+    @apply max-h-[300px] overflow-y-auto;
+    scrollbar-width: thin; /* For Firefox */
+  }
+  
+  /* Add styling for webkit scrollbars */
+  #files::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  #files::-webkit-scrollbar-track {
+    @apply bg-moovee-bg/20;
+  }
+  
+  #files::-webkit-scrollbar-thumb {
+    @apply bg-moovee-yellow/70;
+    @apply rounded-full;
+  }
+  
+  #files:empty {
+    @apply hidden;
+  }
+  
+  #files:not(:empty) {
+    @apply p-1;
+  }
+  
+  #files li {
+    @apply px-4 py-3;
+    @apply text-sm;
+    @apply rounded-lg;
+    @apply transition-all duration-200;
+    @apply flex items-center;
+    @apply break-all;
+    @apply relative;
+  }
+  
+  /* Striped styling for file list */
+  #files li:nth-child(odd) {
+    @apply bg-moovee-yellow/5;
+  }
+  
+  #files li:nth-child(even) {
+    @apply bg-moovee-yellow/10;
+  }
+  
+  #files li:hover {
+    @apply bg-moovee-yellow/15;
+  }
+  
   /* Animation */
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes shine {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
   }
 }
