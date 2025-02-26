@@ -54,6 +54,10 @@ def download(movie: Movie):
 
 @app.get("/api/status")
 def status():
-    files = os.listdir(downloads_dir)
+    files = []
+    for filename in os.listdir(downloads_dir):
+        file_path = os.path.join(downloads_dir, filename)
+        file_size = os.path.getsize(file_path)
+        files.append({"name": filename, "size": file_size})
 
     return {"files": files}
