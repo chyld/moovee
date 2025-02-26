@@ -21,5 +21,25 @@ function clearStatus() {
     document.getElementById('input-url').value = '';
 }
 
+async function getFiles() {
+    const response = await fetch("/api/status", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    });
+    
+    const data = await response.json();
+    const filesList = document.getElementById('files');
+    filesList.innerHTML = '';
+
+    data.files.forEach(file => {
+        const li = document.createElement('li');
+        li.textContent = file;
+        filesList.appendChild(li);
+    });
+}
+
 document.getElementById('form-movie').addEventListener('submit', downloadMovie);
 document.getElementById('button-clear').addEventListener('click', clearStatus);
+document.getElementById('button-get-files').addEventListener('click', getFiles);
