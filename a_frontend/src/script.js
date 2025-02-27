@@ -30,13 +30,16 @@ async function getFiles() {
     });
     
     const data = await response.json();
-    const filesList = document.getElementById('files');
-    filesList.innerHTML = '';
+    const tbody = document.getElementById('files').querySelector('tbody');
+    tbody.innerHTML = '';
 
     data.files.forEach(file => {
-        const li = document.createElement('li');
-        li.textContent = file;
-        filesList.appendChild(li);
+        tbody.innerHTML += `
+            <tr>
+                <td>${file.name}</td>
+                <td>${file.size}</td>
+            </tr>
+        `;
     });
 }
 
