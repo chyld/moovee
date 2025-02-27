@@ -35,7 +35,7 @@ async function getFiles() {
 
     data.files.forEach(file => {
         tbody.innerHTML += `
-            <tr>
+            <tr class="file-row">
                 <td>${file.name}</td>
                 <td>${file.size}</td>
             </tr>

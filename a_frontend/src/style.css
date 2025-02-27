@@ -12,6 +12,7 @@
   --color-moovee-error: oklch(70% 0.25 30);
   --color-moovee-yellow: oklch(85% 0.18 85);
   --font-family-moovee: "Inter", system-ui, sans-serif;
+  --font-family-moovee-mono: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
 }
 
 @layer base {
@@ -158,11 +159,12 @@
     @apply overflow-hidden;
     @apply backdrop-blur-sm;
     @apply bg-moovee-bg/50;
-    @apply border-2 border-moovee-yellow/40;
-    @apply divide-y divide-moovee-yellow/10;
+    @apply border border-moovee-yellow/40;
     @apply shadow-lg shadow-moovee-yellow/20;
     @apply transition-all duration-300;
     @apply max-h-[300px] overflow-y-auto;
+    @apply font-mono text-sm;
+    font-family: var(--font-family-moovee-mono);
     scrollbar-width: thin; /* For Firefox */
   }
   
@@ -188,27 +190,56 @@
     @apply p-1;
   }
   
-  #files li {
-    @apply px-4 py-3;
-    @apply text-sm;
-    @apply rounded-lg;
+  #files thead {
+    @apply sticky top-0 z-10;
+  }
+  
+  #files th {
+    @apply px-4 py-2;
+    @apply text-xs uppercase tracking-wider;
+    @apply font-semibold;
+    @apply text-moovee-yellow;
+    @apply bg-moovee-bg/80;
+    @apply backdrop-blur-md;
+    @apply border-b border-moovee-yellow/30;
+  }
+  
+  #files tbody tr {
     @apply transition-all duration-200;
-    @apply flex items-center;
+    @apply border-b border-moovee-yellow/10;
+  }
+  
+  #files tbody tr:last-child {
+    @apply border-b-0;
+  }
+  
+  /* Striped styling for table rows */
+  #files tbody tr:nth-child(odd) {
+    @apply bg-moovee-yellow/5;
+  }
+  
+  #files tbody tr:nth-child(even) {
+    @apply bg-moovee-yellow/10;
+  }
+  
+  #files tbody tr:hover {
+    @apply bg-moovee-yellow/20;
+  }
+  
+  #files td {
+    @apply px-4 py-3;
     @apply break-all;
     @apply relative;
   }
   
-  /* Striped styling for file list */
-  #files li:nth-child(odd) {
-    @apply bg-moovee-yellow/5;
+  #files td:first-child {
+    @apply font-medium text-moovee-text;
   }
   
-  #files li:nth-child(even) {
-    @apply bg-moovee-yellow/10;
-  }
-  
-  #files li:hover {
-    @apply bg-moovee-yellow/15;
+  #files td:last-child {
+    @apply text-right;
+    @apply text-moovee-yellow;
+    @apply tabular-nums;
   }
   
   /* Animation */
