@@ -1,17 +1,9 @@
 #! /bin/bash
 
-rm -rf build
-rm -rf node_modules
-rm -rf package-lock.json
-
-npm install
-mkdir -p build/{static,templates}
-cp src/assets/* build/static/
-cp src/*.js build/static/
-cp src/home.html build/templates/
+./scripts/stage-1.sh
 
 if [ -n "$MOOVEE_DEBUG" ]; then # check if MOOVEE_DEBUG is set
-  npx @tailwindcss/cli -i ./src/style.css -o ./build/static/style.css --watch
+    npx nodemon --watch src --ext js,html,css --exec "./scripts/stage-2.sh"
 else
-  npx @tailwindcss/cli -i ./src/style.css -o ./build/static/style.css
+    ./scripts/stage-2.sh
 fi
